@@ -1,14 +1,16 @@
 <?php
+// Start the session
 session_start();
 
+// Redirect to login page if user is not logged in
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
 }
 
+// Get user tasks
 $user_id = $_SESSION['user_id'];
 $tasks = getUserTasks($user_id);
-
 ?>
 
 <!DOCTYPE html>

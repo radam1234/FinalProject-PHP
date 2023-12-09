@@ -1,21 +1,29 @@
 <?php
+// Start the session
 session_start();
 
+// Check if the user is already logged in, redirect to tasks page
 if (isset($_SESSION['user_id'])) {
     header("Location: tasks.php");
     exit();
 }
 
+// Check if the form is submitted using POST method
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
+    // For demo purposes, checking if the username is 'demo' and the password is 'password'
     if ($username === 'demo' && $password === 'password') {
+        // Set session variables to simulate a successful login
         $_SESSION['user_id'] = 1;
         $_SESSION['username'] = $username;
+
+        // Redirect to the tasks page after successful login
         header("Location: tasks.php");
         exit();
     } else {
+        // Set an error message if login credentials are incorrect
         $_SESSION['error_message'] = "Invalid username or password";
     }
 }

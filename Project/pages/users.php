@@ -1,15 +1,17 @@
 <?php
-include 'includes/db.php';
-include 'includes/functions.php';
+// Include necessary files and start session if needed
+include 'db.php';
+include 'functions.php';
 session_start();
 
+// Redirect to login page if user is not logged in
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
 }
 
+// Get all registered users
 $users = getAllUsers();
-
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +25,7 @@ $users = getAllUsers();
 </head>
 
 <body>
-<?php include 'includes/header.php'; ?>
+<?php include 'header.php'; ?>
 
 <div class="container">
     <h2>Registered Users</h2>

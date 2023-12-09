@@ -20,6 +20,7 @@ session_start();
 <?php include 'header.php'; ?>
 
 <div class="container">
+    <!-- Heading for the About page -->
     <h2>About Task Manager</h2>
     <p>
         Welcome to our Task Manager! We understand the importance of staying organized and
@@ -27,6 +28,7 @@ session_start();
         way to keep track of your to-do list, set priorities, and achieve your goals.
     </p>
 
+    <!-- Key features of the Task Manager -->
     <p>
         Key Features:
     </p>
@@ -38,20 +40,21 @@ session_start();
         <li>View a personalized dashboard with task insights</li>
     </ul>
 
+    <!-- Benefits of using the Task Manager -->
     <p>
         Whether you're a professional managing work tasks or an individual keeping track of personal
         responsibilities, our task manager is designed to streamline your workflow and enhance your productivity.
     </p>
 
+    <!-- Call to action and contact information -->
     <p>
         Get started today and take control of your tasks. If you have any feedback or questions, feel free
         to reach out to us. We're here to help you make the most of your task management experience.
     </p>
-
-
 </div>
 
 <?php
+// Include the footer section
 include 'footer.php';
 ?>
 </body>

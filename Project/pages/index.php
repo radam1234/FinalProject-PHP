@@ -3,6 +3,7 @@ include 'database.php';
 include 'functions.php';
 session_start();
 
+// Check if the user is not logged in, redirect to the login page
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
@@ -20,9 +21,9 @@ $tasks = getUserTasks($user_id);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task Manager</title>
-    <!--CSS-->
+    <!-- CSS -->
     <link rel="stylesheet" href="../css/style.css">
-    <!--Fonts -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
@@ -32,20 +33,23 @@ $tasks = getUserTasks($user_id);
 <?php include 'includes/header.php'; ?>
 
 <div class="container">
+    <!-- Welcome message -->
     <h2>Welcome, <?php echo $_SESSION['username']; ?></h2>
 
+    <!-- Display success message if any -->
     <?php if (isset($_SESSION['success_message'])) : ?>
         <div class="success"><?php echo $_SESSION['success_message']; ?></div>
         <?php unset($_SESSION['success_message']); ?>
     <?php endif; ?>
 
+    <!-- Display error message if any -->
     <?php if (isset($_SESSION['error_message'])) : ?>
         <div class="error"><?php echo $_SESSION['error_message']; ?></div>
         <?php unset($_SESSION['error_message']); ?>
     <?php endif; ?>
 
+    <!-- Display user's tasks -->
     <h3>Your Tasks:</h3>
-
     <ul>
         <?php foreach ($tasks as $task) : ?>
             <li>
@@ -60,6 +64,7 @@ $tasks = getUserTasks($user_id);
         <?php endforeach; ?>
     </ul>
 
+    <!-- Form to add a new task -->
     <h3>Add New Task:</h3>
     <form action="add_task.php" method="post">
         <label for="task_name">Task Name:</label>
@@ -74,6 +79,7 @@ $tasks = getUserTasks($user_id);
         <button type="submit">Add Task</button>
     </form>
 
+    <!-- Form to logout -->
     <form action="logout.php" method="post">
         <button type="submit">Logout</button>
     </form>
@@ -89,6 +95,7 @@ $tasks = getUserTasks($user_id);
     <img src="../img/woman.jpg" alt="Banner Image">
 </div>
 
+<!-- Background Image -->
 <div class="background-image">
     <img src="../img/pexels-mikhail-nilov-8296981.jpg" alt="Background Image">
 </div>
@@ -99,7 +106,6 @@ $tasks = getUserTasks($user_id);
     <img src="../img/icon2.png" alt="Task Category Icon 2">
     <img src="../img/icon3.png" alt="Task Category Icon 3">
 </div>
-
 
 <?php include 'footer.php'; ?>
 </body>
